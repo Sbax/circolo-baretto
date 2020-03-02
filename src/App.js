@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'wouter';
+import About from './components/About';
+import Episodes from './components/Episodes';
+import Header from './components/Header';
+import Player from './components/Player';
+import WhereToListen from './components/WhereToListen';
+import { EpisodesProvider } from './episodes.context';
+import GlobalStyle from './style/GlobalStyle';
+import { PlayerProvider } from './player.context';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <EpisodesProvider>
+      <PlayerProvider>
+        <GlobalStyle />
+        <Header />
+        <Route path="/" component={About} />
+        <Route path="/episodes" component={Episodes} />
+        <Route path="/where" component={WhereToListen} />
+
+        <Player />
+      </PlayerProvider>
+    </EpisodesProvider>
   );
-}
+};
 
 export default App;
