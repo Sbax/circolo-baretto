@@ -7,9 +7,9 @@ import ActiveLink from './ActiveLink';
 const Container = styled.section`
   font-weight: 400;
   background: url(${backgroundPattern});
+  background-size: 4rem;
   width: 100%;
   height: 12rem;
-  background-size: 4rem;
 
   > .container {
     height: 100%;
@@ -37,7 +37,7 @@ const TitlesContainer = styled.div`
 
 const Title = styled.h1`
   display: inline;
-  background: white;
+  background: ${theme.offwhite};
   font-size: 3rem;
   padding: 0.5rem;
 
@@ -50,7 +50,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   display: inline;
-  background: white;
+  background: ${theme.offwhite};
   padding: 0.5rem;
   text-transform: uppercase;
 `;
@@ -68,7 +68,7 @@ const LinksContainer = styled.section`
     display: inline-block;
     padding: 0.5rem;
 
-    background: white;
+    background: ${theme.offwhite};
     color: ${theme.offblack};
 
     position: relative;

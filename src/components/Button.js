@@ -3,18 +3,19 @@ import { theme } from '../style/theme';
 
 const Button = styled.button`
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.25em;
   font-size: 1em;
 
   text-transform: uppercase;
   font-family: 'Oswald';
-  background: white;
+  background: ${({ inverted }) =>
+    inverted ? theme.primaryLight : theme.offwhite};
   color: ${theme.offblack};
+  border: 0;
+  outline: none;
+  cursor: pointer;
 
   position: relative;
-  outline: none;
-
-  cursor: pointer;
 
   &:after {
     content: '';
@@ -22,7 +23,7 @@ const Button = styled.button`
     bottom: 0;
     left: 0;
     right: 0;
-    height: 0rem;
+    height: 0;
 
     background: ${theme.primary};
     transition: height 100ms ease-in-out;
@@ -31,12 +32,13 @@ const Button = styled.button`
   &:hover,
   &.active {
     &:after {
-      height: 0.25rem;
+      height: 0.25em;
     }
   }
 
   &:active {
-    background: white;
+    background: ${({ inverted }) =>
+      inverted ? theme.primaryLight : theme.offwhite};
   }
 `;
 

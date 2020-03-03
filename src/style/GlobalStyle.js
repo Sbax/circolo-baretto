@@ -13,12 +13,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
     color: ${theme.offblack};
-    background: white;
+    background: ${theme.offwhite};
+    > div#root {
+      margin-bottom: calc(${theme.playerHeight} + .5rem);
+    }
 
     @media screen and (max-width: ${theme.breakpoints.tablet}) {
       font-size: 14px;
-
-      margin-bottom: ${theme.playerHeight};
     }
   }
 

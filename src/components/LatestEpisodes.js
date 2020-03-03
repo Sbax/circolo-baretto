@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { EpisodesContext } from '../episodes.context';
 import styled from 'styled-components';
+import { Link } from 'wouter';
+import { EpisodesContext } from '../episodes.context';
+import { PlayerContext } from '../player.context';
 import { theme } from '../style/theme';
-import { format } from 'date-fns';
-import { it } from 'date-fns/locale';
-import { PlayerContext, updatePlayingTrack } from '../player.context';
+import Episode from './Episode';
 import Loader from './Loader';
-import Button from './Button';
 
 const LoaderContainer = styled.div`
   font-size: 2.5rem;
@@ -14,13 +13,17 @@ const LoaderContainer = styled.div`
 
 const Container = styled.section`
   background: ${theme.secondary};
-  color: white;
+  color: ${theme.offwhite};
 
   > .container {
     min-height: 12rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    > * + * {
+      margin-top: 0.5rem;
+    }
   }
 `;
 
@@ -36,12 +39,17 @@ const EpisodeList = styled.div`
     flex: 1;
   }
 
+  ${Episode.selector} {
+    h1 {
+      min-height: ${1.4 * 3}rem;
+      @media screen and (max-width: ${theme.breakpoints.tablet}) {
+        min-height: 0;
+      }
+    }
+  }
+
   @media screen and (max-width: ${theme.breakpoints.tablet}) {
     flex-direction: column;
-
-    > * {
-      padding: 0.5rem;
-    }
 
     > * + * {
       margin-top: 0.5rem;
@@ -50,58 +58,73 @@ const EpisodeList = styled.div`
   }
 `;
 
-const SingleEpisode = styled.article`
-  line-height: 1.4rem;
-
-  h1 {
-    font-weight: 400;
-    min-height: ${1.4 * 3}rem;
-    @media screen and (max-width: ${theme.breakpoints.tablet}) {
-      min-height: 0;
-    }
-
-    text-transform: uppercase;
-    color: white;
-  }
-
-  h3 {
-    text-transform: uppercase;
-  }
+const Row = styled.section`
+  display: flex;
+  align-items: flex-end;
 
   > * + * {
-    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  > a {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0rem;
+
+      background: ${theme.primary};
+      transition: height 100ms ease-in-out;
+    }
+
+    &:hover,
+    &.active {
+      &:after {
+        height: 0.25rem;
+      }
+    }
   }
 `;
 
-const Episode = ({ title, date, play }) => (
-  <SingleEpisode>
-    <h3>{format(new Date(date), 'd MMMM yyy', { locale: it })}</h3>
-    <h1>{title}</h1>
+const Title = styled.h1`
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+`;
 
-    <Button onClick={play}>Ascolta ora</Button>
-  </SingleEpisode>
+const Wrapper = ({ children }) => (
+  <Container>
+    <div className="container">
+      <Row>
+        <Title>Ultimi episodi</Title>
+        <Link href="/episodes">Vedi tutti</Link>
+      </Row>
+      {children}
+    </div>
+  </Container>
 );
 
 const LatestEpisodes = () => {
-  const { page, episodes, isLastPage, updateData } = useContext(
-    EpisodesContext
-  );
+  const episodesContext = useContext(EpisodesContext);
 
-  const { dispatch } = useContext(PlayerContext);
+  const { page, episodes } = episodesContext.state;
+  const playerContext = useContext(PlayerContext);
 
-  const updatePlaying = episode => updatePlayingTrack(dispatch, episode);
+  const updatePlaying = playerContext.updatePlayingTrack;
 
   if (!page) {
-    updateData(page, isLastPage);
+    episodesContext.getEpisodes();
 
     return (
-      <Container>
-        <div className="container">
-          <LoaderContainer>
-            <Loader />
-          </LoaderContainer>
-        </div>
-      </Container>
+      <Wrapper>
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+      </Wrapper>
     );
   }
 
@@ -110,19 +133,17 @@ const LatestEpisodes = () => {
     .slice(0, 3);
 
   return (
-    <Container>
-      <div className="container">
-        <EpisodeList>
-          {latestEpisodes.map(episode => (
-            <Episode
-              {...episode}
-              play={() => updatePlaying(episode)}
-              key={episode.id}
-            />
-          ))}
-        </EpisodeList>
-      </div>
-    </Container>
+    <Wrapper>
+      <EpisodeList>
+        {latestEpisodes.map(episode => (
+          <Episode
+            {...episode}
+            play={() => updatePlaying(episode)}
+            key={episode.id}
+          />
+        ))}
+      </EpisodeList>
+    </Wrapper>
   );
 };
 

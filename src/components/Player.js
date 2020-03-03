@@ -19,7 +19,7 @@ const Container = styled.section`
   display: flex;
 
   height: ${({ isPlaying }) => (isPlaying ? theme.playerHeight : 0)};
-  background: white;
+  background: ${theme.offwhite};
   box-shadow: 0 5px 10px rgba(33, 33, 33, 0.2),
     0 15px 40px rgba(33, 33, 33, 0.4);
 
@@ -51,7 +51,7 @@ const Button = styled.div`
 
 const Icon = styled.div`
   padding: 1.5rem;
-  color: white;
+  color: ${theme.offwhite};
   background: ${theme.secondary};
   opacity: 0.5;
 `;
@@ -113,6 +113,13 @@ const Player = () => {
     setPosition(0);
   }, [playingEpisode]);
 
+  const mouseDownHandler = () => setSeeking(true);
+  const mouseUpHandler = event => {
+    setSeeking(false);
+
+    playerElement.current.seekTo(parseFloat(event.target.value));
+  };
+
   return (
     <Container isPlaying={!!playingEpisode}>
       {playingEpisode ? (
@@ -135,12 +142,10 @@ const Player = () => {
               <Seekbar
                 value={position}
                 loaded={loaded}
-                onMouseDown={() => setSeeking(true)}
-                onMouseUp={event => {
-                  setSeeking(false);
-
-                  playerElement.current.seekTo(parseFloat(event.target.value));
-                }}
+                onMouseDown={mouseDownHandler}
+                onMouseUp={mouseUpHandler}
+                onTouchStart={mouseDownHandler}
+                onTouchEnd={mouseUpHandler}
                 onChange={event => {
                   setPosition(parseFloat(event.target.value));
                 }}
