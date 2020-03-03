@@ -1,6 +1,6 @@
 {
   "short_name": "Circolo Baretto",
-  "name": "Due baldi giovani che si cimentano nell'antica arte del podcast",
+  "name": "Circolo Baretto",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffcc00",
+  "background_color": "#fafafa"
 }
