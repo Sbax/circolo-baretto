@@ -28,6 +28,10 @@
     }
   ],
   "speakers": [
-
+    {
+      "name": "Balda",
+      "instagram": "https://www.instagram.com/topo.ne/",
+      "avatar": "/uploads/balda.jpg"
+    }
   ]
 }
