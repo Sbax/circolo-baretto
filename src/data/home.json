@@ -1,6 +1,10 @@
 {
   "where-to-listen": [
     {
+      "label": "YouTube",
+      "link": "https://www.youtube.com/channel/UCdFvm_zzHS9snIVox8JnRKQ"
+    },
+    {
       "label": "Spotify",
       "link": "https://open.spotify.com/show/5TiKfSmIQOStiIiaxU4IqX"
     }
