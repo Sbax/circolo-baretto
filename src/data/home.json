@@ -1,8 +1,8 @@
 {
   "where-to-listen": [
     {
-      "label": "RSS",
-      "link": "https://circolobaretto.podomatic.com/rss2.xml"
+      "label": "Spotify",
+      "link": "https://open.spotify.com/show/5TiKfSmIQOStiIiaxU4IqX"
     },
     {
       "label": "Apple Podcast",
@@ -13,18 +13,18 @@
       "link": "https://www.youtube.com/channel/UCdFvm_zzHS9snIVox8JnRKQ"
     },
     {
-      "label": "Spotify",
-      "link": "https://open.spotify.com/show/5TiKfSmIQOStiIiaxU4IqX"
+      "label": "RSS",
+      "link": "https://circolobaretto.podomatic.com/rss2.xml"
     }
   ],
   "contacts": [
     {
-      "label": "Mail",
-      "link": "circolobaretto@gmail.com"
-    },
-    {
       "label": "Instagram",
       "link": "https://www.instagram.com/circolo.baretto/"
+    },
+    {
+      "label": "Mail",
+      "link": "circolobaretto@gmail.com"
     }
   ],
   "speakers": [
