@@ -18,7 +18,10 @@
     }
   ],
   "contacts": [
-
+    {
+      "label": "Instagram",
+      "link": "https://www.instagram.com/circolo.baretto/"
+    }
   ],
   "speakers": [
 
