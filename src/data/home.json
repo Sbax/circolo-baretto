@@ -1,6 +1,14 @@
 {
   "where-to-listen": [
     {
+      "label": "RSS",
+      "link": "https://circolobaretto.podomatic.com/rss2.xml"
+    },
+    {
+      "label": "Apple Podcast",
+      "link": "https://podcasts.apple.com/ca/podcast/circolo-baretto/id1495040116"
+    },
+    {
       "label": "YouTube",
       "link": "https://www.youtube.com/channel/UCdFvm_zzHS9snIVox8JnRKQ"
     },
