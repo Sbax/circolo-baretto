@@ -1,4 +1,64 @@
 ---
-label: Dove Ascoltarci
+label: Home
 hide_body: false
-fields: []
+fields:
+- name: where-to-listen
+  type: field_group_list
+  fields:
+  - name: label
+    type: text
+    config:
+      required: false
+    label: Label
+  - name: link
+    type: text
+    config:
+      required: false
+    label: Link
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Dove Ascoltarci
+- name: contacts
+  type: field_group_list
+  fields:
+  - name: label
+    type: text
+    config:
+      required: false
+    label: Label
+  - name: link
+    type: text
+    config:
+      required: false
+    label: Link
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Contatti
+- name: speakers
+  type: field_group_list
+  fields:
+  - name: name
+    type: text
+    config:
+      required: false
+    label: Nome
+  - name: instagram
+    type: text
+    config:
+      required: false
+    label: Instagram
+    description: Link a instagram
+  - name: avatar
+    type: file
+    config:
+      maxSize: 250
+    label: Avatar
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Speakers
