@@ -3,25 +3,26 @@ import styled from 'styled-components';
 import homeData from '../data/home.json';
 import List from './List';
 
-const data = homeData['where-to-listen'];
+const data = homeData['contacts'];
 
-const WhereToListenContainer = styled.section`
+const ContactsContainer = styled.section`
   margin: 0.5rem;
 
   > .container {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
   }
 `;
 
-const WhereToListen = () => {
+const Contacts = () => {
   return (
-    <WhereToListenContainer>
+    <ContactsContainer>
       <div className="container">
-        <List title="Dove Ascoltarci" list={data} />
+        <List title="Come Contattarci" list={data} />
       </div>
-    </WhereToListenContainer>
+    </ContactsContainer>
   );
 };
 
-export default WhereToListen;
+export default Contacts;

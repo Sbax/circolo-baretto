@@ -111,7 +111,6 @@ const Header = props => {
         <LinksContainer>
           <ActiveLink href="/">Chi siamo</ActiveLink>
           <ActiveLink href="/episodes">Episodi</ActiveLink>
-          <ActiveLink href="/where">Contatti</ActiveLink>
         </LinksContainer>
       </div>
     </Container>

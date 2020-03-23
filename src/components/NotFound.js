@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'wouter';
-import { theme } from '../style/theme';
 import { ReactComponent as Beer } from '../svgs/beer.svg';
 
 const Container = styled.section`
   height: 100%;
-  background: ${theme.primaryLight};
   font-size: 4rem;
   font-weight: 400;
 

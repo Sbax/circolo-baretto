@@ -4,13 +4,11 @@ import About from './components/About';
 import EpisodePage from './components/EpisodePage';
 import Episodes from './components/Episodes';
 import Header from './components/Header';
+import NotFound from './components/NotFound';
 import Player from './components/Player';
-import WhereToListen from './components/WhereToListen';
 import { EpisodesProvider } from './episodes.context';
 import { PlayerProvider } from './player.context';
 import GlobalStyle from './style/GlobalStyle';
-import NotFound from './components/NotFound';
-
 const App = () => {
   return (
     <EpisodesProvider>
@@ -23,7 +21,6 @@ const App = () => {
           <Route path="/episodes/:id">
             {params => <EpisodePage {...params} />}
           </Route>
-          <Route path="/where" component={WhereToListen} />
           <Route path="/:any*" component={NotFound} />
         </Switch>
 

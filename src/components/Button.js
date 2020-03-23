@@ -8,8 +8,7 @@ const Button = styled.button`
 
   text-transform: uppercase;
   font-family: 'Oswald';
-  background: ${({ inverted }) =>
-    inverted ? theme.primaryLight : theme.offwhite};
+  background: ${({ inverted }) => (inverted ? theme.primary : theme.offwhite)};
   color: ${theme.offblack};
   border: 0;
   outline: none;
@@ -25,7 +24,8 @@ const Button = styled.button`
     right: 0;
     height: 0;
 
-    background: ${theme.primary};
+    background: ${({ inverted }) =>
+      inverted ? theme.offblack : theme.primary};
     transition: height 100ms ease-in-out;
   }
 
@@ -38,7 +38,7 @@ const Button = styled.button`
 
   &:active {
     background: ${({ inverted }) =>
-      inverted ? theme.primaryLight : theme.offwhite};
+      inverted ? theme.primary : theme.offwhite};
   }
 `;
 
