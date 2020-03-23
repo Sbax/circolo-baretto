@@ -62,3 +62,5 @@ fields:
     max: 
     labelField: 
   label: Speakers
+pages:
+- src/data/home.json
